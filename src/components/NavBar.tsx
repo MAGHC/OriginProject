@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
 import { BiLogIn, BiCartAlt, BiCubeAlt } from 'react-icons/bi';
 
-const NAV_COMMON_STYLE = ' font-light font-body gap-1 flex items-center';
+const NAV_COMMON_STYLE =
+  ' transition duration-300 hover:scale-110 font-light font-body gap-1 flex items-center ';
 
 const NavBar = () => {
   return (
@@ -12,7 +13,7 @@ const NavBar = () => {
         <Logo></Logo>
       </Link>
       <nav className=" items-center  flex gap-8 text-white font-light">
-        <Link className={`${NAV_COMMON_STYLE}`} to="/product">
+        <Link className={`${NAV_COMMON_STYLE} `} to="/product">
           <BiCubeAlt></BiCubeAlt>Products
         </Link>
         <Link className={`${NAV_COMMON_STYLE}`} to="/cart">
