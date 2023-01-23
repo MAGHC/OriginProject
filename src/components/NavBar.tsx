@@ -38,14 +38,14 @@ const NavBar = () => {
           <BiCartAlt></BiCartAlt>Cart
         </Link>
         {!user && (
-          <button className={`${NAV_COMMON_STYLE} mr-5`}>
-            <BiLogIn onClick={handleLogin}></BiLogIn>
+          <button onClick={handleLogin} className={`${NAV_COMMON_STYLE} mr-5`}>
+            <BiLogIn></BiLogIn>
             Login
           </button>
         )}
         {user && (
-          <button className={`${NAV_COMMON_STYLE} mr-5`}>
-            <BiLogOut onClick={handleLogout}></BiLogOut>
+          <button onClick={handleLogout} className={`${NAV_COMMON_STYLE} mr-5`}>
+            <BiLogOut></BiLogOut>
             Logout
           </button>
         )}
