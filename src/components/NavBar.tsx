@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
-import { BiLogIn, BiCartAlt, BiCubeAlt } from 'react-icons/bi';
+import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
-import { login } from '../api/firebase.js';
+import { login, logout } from '../api/firebase.js';
 
 import { LoginI } from '../type/AuthType';
 
@@ -19,6 +19,10 @@ const NavBar = () => {
     login().then((res) => {
       setUser(res);
     });
+  };
+
+  const handleLogout = () => {
+    logout().then(setUser);
   };
 
   return (
@@ -37,6 +41,12 @@ const NavBar = () => {
           <button className={`${NAV_COMMON_STYLE} mr-5`}>
             <BiLogIn onClick={handleLogin}></BiLogIn>
             Login
+          </button>
+        )}
+        {user && (
+          <button className={`${NAV_COMMON_STYLE} mr-5`}>
+            <BiLogOut onClick={handleLogout}></BiLogOut>
+            Logout
           </button>
         )}
       </nav>
