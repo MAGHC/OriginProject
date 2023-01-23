@@ -27,15 +27,11 @@ const auth = getAuth();
 // });
 
 export async function login() {
-  return await signInWithPopup(auth, provider)
-    .then((res) => res.user)
-    .catch((error) => error);
+  return await signInWithPopup(auth, provider).catch((error) => error);
 }
 
 export async function logout() {
-  return signOut(auth)
-    .then(() => null)
-    .catch((error) => error);
+  return signOut(auth).catch((error) => error);
 }
 
 export async function onAuthChange(setState) {

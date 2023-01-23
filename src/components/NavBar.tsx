@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
 import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
-import { login, logout, onAuthChange } from '../api/firebase.js';
+import { login, logout } from '../api/firebase.js';
 
 import User from './User';
 import { useAuthContext } from '../context/AuthContext';
@@ -14,7 +12,7 @@ const NAV_COMMON_STYLE =
   ' transition duration-300 hover:scale-110 font-light font-body gap-1 flex items-center ';
 
 const NavBar = () => {
-  const { user } = useAuthContext();
+  const { user, login, logout } = useAuthContext();
 
   return (
     <header className="  px-12 flex justify-between bg-slate-900 p-4">
