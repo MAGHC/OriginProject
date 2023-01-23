@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 
 import { Cart, ProductDetail, ProductNew } from './pages';
+import ProtectedRouter from './pages/ProtectedRouter';
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,22 @@ const router = createBrowserRouter([
         index: true,
         element: <p>Main</p>,
       },
-      { path: '/product/new', element: <ProductNew></ProductNew> },
-      { path: '/cart', element: <Cart></Cart> },
+      {
+        path: '/product/new',
+        element: (
+          <ProtectedRouter>
+            <ProductNew></ProductNew>
+          </ProtectedRouter>
+        ),
+      },
+      {
+        path: '/cart',
+        element: (
+          <ProtectedRouter>
+            <Cart></Cart>
+          </ProtectedRouter>
+        ),
+      },
       { path: '/product/:id', element: <ProductDetail></ProductDetail> },
     ],
   },

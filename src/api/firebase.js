@@ -8,16 +8,22 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
+import { getDatabase, ref, child, get } from 'firebase/database';
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APP_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
 };
 
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+
+const database = getDatabase(app);
+const dbRef = ref(getDatabase());
 
 //Auth
 
@@ -35,11 +41,30 @@ export async function logout() {
 }
 
 export async function onAuthChange(setState) {
-  return onAuthStateChanged(auth, (user) => {
+  return onAuthStateChanged(auth, async (user) => {
     if (user) {
+      const updatedUser = user && (await getAdmin(user));
+      console.log(updatedUser);
       setState(user);
     } else {
       return setState(null);
     }
   });
+}
+
+export async function getAdmin(user) {
+  return await get(child(dbRef, `admin`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admin = snapshot.val();
+        console.log(user.uid, admin);
+        const isAdmin = admin.includes(user.uid);
+
+        return { ...user, Admin: isAdmin };
+      }
+      return user;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
