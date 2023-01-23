@@ -1,30 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
 import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
-import { login, logout } from '../api/firebase.js';
+import { login, logout, onAuthChange } from '../api/firebase.js';
 
-import { LoginI } from '../type/AuthType';
 import User from './User';
+import { useAuthContext } from '../context/AuthContext';
 
 const NAV_COMMON_STYLE =
   ' transition duration-300 hover:scale-110 font-light font-body gap-1 flex items-center ';
 
 const NavBar = () => {
-  const [user, setUser] = useState<null | LoginI>(null);
-
-  const handleLogin = () => {
-    login().then((res) => {
-      setUser(res);
-    });
-  };
-
-  const handleLogout = () => {
-    logout().then(setUser);
-  };
+  const { user } = useAuthContext();
 
   return (
     <header className="  px-12 flex justify-between bg-slate-900 p-4">
@@ -39,14 +29,14 @@ const NavBar = () => {
           <BiCartAlt></BiCartAlt>Cart
         </Link>
         {!user && (
-          <button onClick={handleLogin} className={`${NAV_COMMON_STYLE} mr-5`}>
+          <button onClick={login} className={`${NAV_COMMON_STYLE} mr-5`}>
             <BiLogIn></BiLogIn>
             Login
           </button>
         )}
         {user && <User user={user}></User>}
         {user && (
-          <button onClick={handleLogout} className={`${NAV_COMMON_STYLE} mr-5`}>
+          <button onClick={logout} className={`${NAV_COMMON_STYLE} mr-5`}>
             <BiLogOut></BiLogOut>
             Logout
           </button>
