@@ -8,6 +8,7 @@ import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 import { login, logout } from '../api/firebase.js';
 
 import { LoginI } from '../type/AuthType';
+import User from './User';
 
 const NAV_COMMON_STYLE =
   ' transition duration-300 hover:scale-110 font-light font-body gap-1 flex items-center ';
@@ -43,6 +44,7 @@ const NavBar = () => {
             Login
           </button>
         )}
+        {user && <User user={user}></User>}
         {user && (
           <button onClick={handleLogout} className={`${NAV_COMMON_STYLE} mr-5`}>
             <BiLogOut></BiLogOut>
