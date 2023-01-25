@@ -45,7 +45,7 @@ export async function onAuthChange(setState) {
     if (user) {
       const updatedUser = user && (await getAdmin(user));
       console.log(updatedUser);
-      setState(user);
+      setState(updatedUser);
     } else {
       return setState(null);
     }
