@@ -9,7 +9,7 @@ const User = ({ user }: PropsI) => {
   return (
     <div className="flex items-center gap-3">
       <img className=" w-9 rounded-lg" src={photoURL} alt={displayName}></img>
-      <span className=" hidden md:block">{displayName}</span>
+      <span className=" font-title hidden md:block">{displayName}</span>
     </div>
   );
 };
