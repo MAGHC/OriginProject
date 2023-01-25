@@ -20,8 +20,8 @@ const NavBar = () => {
         <Logo></Logo>
       </Link>
       <nav className=" items-center  flex gap-8 text-white font-light">
-        <Link className={`${NAV_COMMON_STYLE} `} to="/product">
-          <BiCubeAlt></BiCubeAlt>Products
+        <Link className={`${NAV_COMMON_STYLE} `} to="/product/new">
+          <BiCubeAlt></BiCubeAlt>New Products
         </Link>
         <Link className={`${NAV_COMMON_STYLE}`} to="/cart">
           <BiCartAlt></BiCartAlt>Cart
