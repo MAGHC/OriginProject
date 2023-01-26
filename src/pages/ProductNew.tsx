@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { uploadImg } from '../api/cloudinary.js';
+import { setNewProduct } from '../api/firebase.js';
 import { ProductI } from '../type/NewProductType';
 
 const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-gray-600';
@@ -11,7 +12,7 @@ const ProductNew = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    uploadImg(file).then(console.log);
+    uploadImg(file).then((img) => setNewProduct(product, img));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +43,7 @@ const ProductNew = () => {
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          // required
+          required
           onChange={handleChange}
           value={product.title ?? ''}
           name="title"
@@ -51,7 +52,7 @@ const ProductNew = () => {
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          // required
+          required
           onChange={handleChange}
           value={product.price ?? ''}
           name="price"
@@ -60,7 +61,7 @@ const ProductNew = () => {
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          // required
+          required
           onChange={handleChange}
           value={product.description ?? ''}
           name="description"
@@ -70,7 +71,7 @@ const ProductNew = () => {
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
           value={product.option ?? ''}
-          // required
+          required
           onChange={handleChange}
           name="option"
           type="text"
