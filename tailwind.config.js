@@ -12,7 +12,7 @@ module.exports = {
     fontFamily: {
       title: ['Poppins'],
       body: ['Roboto'],
-      kor: ['Gowun Dodum'],
+      kor: ['Noto Sans KR'],
     },
   },
   plugins: [],
