@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
+import { BiCheckCircle } from 'react-icons/bi';
+
 import { uploadImg } from '../api/cloudinary.js';
 import { setNewProduct } from '../api/firebase.js';
+
 import { ProductI } from '../type/NewProductType';
 
 const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-gray-600';
@@ -9,10 +12,21 @@ const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-
 const ProductNew = () => {
   const [product, setProduct] = useState<ProductI>({});
   const [file, setFile] = useState<Blob>();
+  const [uploading, setUploading] = useState(false);
+  const [successs, setSuccess] = useState<string | null>();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    uploadImg(file).then((img) => setNewProduct(product, img));
+    setUploading(true);
+    uploadImg(file)
+      .then((img) => {
+        setNewProduct(product, img).then(() => {
+          setSuccess('제품이 데이터베이스에 등록되었습니다');
+          window.scrollTo(0, 0);
+          setTimeout(() => setSuccess(null), 3000);
+        });
+      })
+      .finally(() => setUploading(false));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +43,12 @@ const ProductNew = () => {
   return (
     <section className=" text-center p-14 ">
       <h1 className=" text-4xl mb-12 font-body my-4">{'New product registration'.toUpperCase()}</h1>
+      {successs && (
+        <p className="animate-bounce my-8 flex font-bold tracking-widest justify-center text-4xl font-kor items-center  ">
+          <BiCheckCircle></BiCheckCircle>
+          {successs}
+        </p>
+      )}
       {file && (
         <img className=" w-1/4 mx-auto" alt="uploadImg" src={URL.createObjectURL(file)}></img>
       )}
@@ -77,7 +97,9 @@ const ProductNew = () => {
           type="text"
           placeholder="옵션"
         ></input>
-        <button className=" mt-8 rounded-lg bg-bright font-kor  py-2 w-3/4  ">제출</button>
+        <button disabled={uploading} className=" mt-8 rounded-lg bg-bright font-kor  py-2 w-3/4  ">
+          {uploading ? '업로딩중...' : '제출 하기'}
+        </button>
       </form>
     </section>
   );
