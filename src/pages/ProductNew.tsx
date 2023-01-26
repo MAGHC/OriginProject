@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+import { uploadImg } from '../api/cloudinary.js';
+import { ProductI } from '../type/NewProductType';
 
 const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-gray-600';
 
 const ProductNew = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState<ProductI>({});
   const [file, setFile] = useState<Blob>();
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    uploadImg(file).then(console.log);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = (e.currentTarget.files as FileList)[0];
-    setFile(files);
-    console.log(files);
+    const { name, value } = e.target;
+
+    if (name === 'file') {
+      const files = (e.currentTarget.files as FileList)[0];
+      setFile(files);
+      return;
+    }
+    setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -18,35 +31,48 @@ const ProductNew = () => {
       {file && (
         <img className=" w-1/4 mx-auto" alt="uploadImg" src={URL.createObjectURL(file)}></img>
       )}
-      <form className="flex text-xl flex-col items-center p-14 ">
+      <form onSubmit={handleSubmit} className="flex text-xl flex-col items-center p-14 ">
         <input
           onChange={handleChange}
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
           required
+          name="file"
           type="file"
           accept="image/*"
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          required
+          // required
+          onChange={handleChange}
+          value={product.title ?? ''}
+          name="title"
           type="text"
           placeholder="제품 명 "
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          required
+          // required
+          onChange={handleChange}
+          value={product.price ?? ''}
+          name="price"
           type="number"
           placeholder="가격"
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          required
+          // required
+          onChange={handleChange}
+          value={product.description ?? ''}
+          name="description"
           type="text"
           placeholder="제품 설명 "
         ></input>
         <input
           className={`${NEW_PRODUCT_INPUT_COMMON_STYLE}`}
-          required
+          value={product.option ?? ''}
+          // required
+          onChange={handleChange}
+          name="option"
           type="text"
           placeholder="옵션"
         ></input>
