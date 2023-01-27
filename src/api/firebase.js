@@ -80,3 +80,12 @@ export async function setNewProduct(product, img) {
     option: product.option.split(','),
   });
 }
+
+export async function getProducts() {
+  return await get(child(dbRef, 'products')).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
