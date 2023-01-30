@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
 import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
-import { login, logout } from '../api/firebase.js';
-
 import User from './User';
+
 import { useAuthContext } from '../context/AuthContext';
 
 const NAV_COMMON_STYLE =
