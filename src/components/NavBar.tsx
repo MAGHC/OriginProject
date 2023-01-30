@@ -15,7 +15,7 @@ const NavBar = () => {
   const { user, login, logout } = useAuthContext();
 
   return (
-    <header className=" w-screen   px-12 flex justify-between bg-slate-900 p-4">
+    <header className=" z-50 w-screen sticky top-0  px-12 flex justify-between bg-slate-900 p-4">
       <Link to="/">
         <Logo></Logo>
       </Link>
