@@ -93,3 +93,11 @@ export async function getProducts() {
 export async function addCart(id, product) {
   return await set(ref(database, `cart/${id}/${product.id}`), product);
 }
+
+export async function getCart(id) {
+  return await get(child(dbRef, `cart/${id}`)).then((snapshot) => {
+    const carts = snapshot.val() || {};
+
+    return Object.values(carts);
+  });
+}
