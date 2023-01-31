@@ -5,7 +5,7 @@ import { BiCheckCircle } from 'react-icons/bi';
 import { uploadImg } from '../api/cloudinary.js';
 import { setNewProduct } from '../api/firebase.js';
 
-import { ProductI } from '../type/NewProductType';
+import { ProductI } from '../type/ProductType';
 
 const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-gray-600';
 
