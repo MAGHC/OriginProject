@@ -89,3 +89,9 @@ export async function getProducts() {
     return [];
   });
 }
+
+export async function addCart(id, product) {
+  return await set(ref(database, `cart/${id}`), {
+    ...product,
+  });
+}
