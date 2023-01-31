@@ -91,7 +91,5 @@ export async function getProducts() {
 }
 
 export async function addCart(id, product) {
-  return await set(ref(database, `cart/${id}`), {
-    ...product,
-  });
+  return await set(ref(database, `cart/${id}/${product.id}`), product);
 }
