@@ -13,7 +13,7 @@ interface DetailLocationState {
 const ProductDetail = () => {
   const {
     state: {
-      product: { id, img, option, description, price, title },
+      product: { img, option, description, price, title },
       product,
     },
   } = useLocation() as DetailLocationState;
@@ -21,6 +21,7 @@ const ProductDetail = () => {
   const { user } = useAuthContext();
 
   const [select, setSelect] = useState(option && option[0]);
+  const [successs, setSuccess] = useState<string | null>();
 
   console.log(select);
 
@@ -28,7 +29,10 @@ const ProductDetail = () => {
     if (!user) {
       alert('로그인해주세요');
     }
-    addCart(user?.uid, { ...product, option: select, quantity: 1 });
+    addCart(user?.uid, { ...product, option: select, quantity: 1 }).then(() => {
+      setSuccess('상품이 추가되었습니다');
+      setTimeout(() => setSuccess(null), 3000);
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,6 +77,7 @@ const ProductDetail = () => {
           >
             ADD CART
           </button>
+          {successs && <p className=" md:mt-28 animate-bounce font-kor text-2xl">{successs}</p>}
         </div>
       </section>
     </>
