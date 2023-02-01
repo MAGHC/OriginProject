@@ -22,8 +22,7 @@ const CartItem = ({ cart }: { cart: CartI }) => {
         <p className={`${COMMON_MARGIN_X}`}>{cart.quantity}</p>
         <BiPlus className={`${COMMON_MARGIN_X}`}></BiPlus>
         <p className=" w-24 ml-[8rem]">{cart.price} ￦</p>
-        <p className=" w-20 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
-
+        <p className=" w-24 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
         <BiX></BiX>
       </div>
     </li>

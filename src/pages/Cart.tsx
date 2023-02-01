@@ -17,19 +17,28 @@ const Cart = () => {
 
   return (
     <>
-      <h2 className="   px-[9rem] py-[3rem] text-4xl font-kor font-bold">장바구니.</h2>
+      <h2 className="   px-[9rem] py-[3rem] text-4xl font-kor font-bold">
+        <p>나의 원천</p>
+        <p className=" font-medium">장바구니</p>
+      </h2>
+
       <section className="  px-[9rem] mt-[3rem] flex flex-col  ">
-        {!hasProduct && <p> 상품추가 </p>}
-        <article className=" w-full  pb-8 font-body  text-xl flex justify ">
-          <p className={`${COMMON_MARGIN_LEFT} ml-8`}>Product</p>
-          <p className={`${COMMON_MARGIN_LEFT}`}>Option</p>
-          <p className={`${COMMON_MARGIN_LEFT}`}>Quantity</p>
-          <p className={`${COMMON_MARGIN_LEFT}`}>Price</p>
-          <p className="border-b-2">Total Price</p>
-        </article>
+        {!hasProduct && (
+          <p className=" my-[10rem] text-hilight animate-pulse text-3xl font-kor font-black mx-auto">
+            아이템을 추가해주세요{' '}
+          </p>
+        )}
+
         {hasProduct && (
           <>
-            <ul className="py-8">
+            <article className=" ml-[6.8rem] w-full  pb-8 font-body  text-xl flex justify ">
+              <p className={`${COMMON_MARGIN_LEFT} ml-8`}>Product</p>
+              <p className={`${COMMON_MARGIN_LEFT}`}>Option</p>
+              <p className={`${COMMON_MARGIN_LEFT}`}>Quantity</p>
+              <p className={`${COMMON_MARGIN_LEFT}`}>Price</p>
+              <p className="border-b-2">Total Price</p>
+            </article>
+            <ul className="py-8 ml-[6.5rem]">
               {carts.map((cart) => {
                 return <CartItem cart={cart}></CartItem>;
               })}
