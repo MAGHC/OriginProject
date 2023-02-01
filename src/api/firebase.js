@@ -9,7 +9,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
-import { getDatabase, ref, child, get, set } from 'firebase/database';
+import { getDatabase, ref, child, get, set, remove } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APP_KEY,
@@ -90,14 +90,18 @@ export async function getProducts() {
   });
 }
 
-export async function addCart(id, product) {
+export async function addAndEditCart(id, product) {
   return await set(ref(database, `cart/${id}/${product.id}`), product);
 }
 
-export async function getCart(id) {
-  return await get(child(dbRef, `cart/${id}`)).then((snapshot) => {
+export async function getCart(userId) {
+  return await get(child(dbRef, `cart/${userId}`)).then((snapshot) => {
     const carts = snapshot.val() || {};
 
     return Object.values(carts);
   });
+}
+
+export async function removeCart(userId, prdocutId) {
+  return await remove(ref(database, `cart/${userId}/${prdocutId}`));
 }

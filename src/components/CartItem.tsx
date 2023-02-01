@@ -2,9 +2,22 @@ import { CartI } from '../type/ProductType';
 
 import { BiPlus, BiMinus, BiX } from 'react-icons/bi';
 
+import { addAndEditCart, removeCart } from '../api/firebase';
+
 const COMMON_MARGIN_X = 'mx-[0.4rem]';
 
-const CartItem = ({ cart }: { cart: CartI }) => {
+const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
+  const handlePluse = () => {
+    addAndEditCart(uid, { ...cart, quantity: cart.quantity + 1 });
+  };
+  const handleMinus = () => {
+    if (cart.quantity < 2) return;
+    addAndEditCart(uid, { ...cart, quantity: cart.quantity - 1 });
+  };
+  const handleDelete = () => {
+    removeCart(uid, cart.id);
+  };
+
   return (
     //맨위 li flex로 디자인
     <li className="  font-body font-light flex my-8 items-center">
@@ -18,12 +31,12 @@ const CartItem = ({ cart }: { cart: CartI }) => {
       </div>
       <div className="flex items-center  ">
         <p className="  w-20 mx-[6rem]">{cart.option}</p>
-        <BiMinus className={`${COMMON_MARGIN_X} ml-8`}></BiMinus>
+        <BiMinus onClick={handleMinus} className={`${COMMON_MARGIN_X} ml-8`}></BiMinus>
         <p className={`${COMMON_MARGIN_X}`}>{cart.quantity}</p>
-        <BiPlus className={`${COMMON_MARGIN_X}`}></BiPlus>
+        <BiPlus onClick={handlePluse} className={`${COMMON_MARGIN_X}`}></BiPlus>
         <p className=" w-24 ml-[8rem]">{cart.price} ￦</p>
         <p className=" w-24 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
-        <BiX></BiX>
+        <BiX onClick={handleDelete}></BiX>
       </div>
     </li>
   );
