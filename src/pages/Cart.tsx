@@ -6,9 +6,9 @@ import CartItem from './../components/CartItem';
 const COMMON_MARGIN_LEFT = ' border-b-2 mr-[9rem]';
 
 const Cart = () => {
-  const { user } = useAuthContext();
+  const { uid } = useAuthContext();
 
-  const { isLoading, error, data: carts } = useQuery(['cart'], () => getCart(user?.uid));
+  const { isLoading, error, data: carts } = useQuery(['cart'], () => getCart(uid));
 
   const hasProduct = carts && carts.length > 0;
 
@@ -40,7 +40,7 @@ const Cart = () => {
             </article>
             <ul className="py-8 ml-[6.5rem]">
               {carts.map((cart) => {
-                return <CartItem cart={cart}></CartItem>;
+                return <CartItem uid={uid} cart={cart}></CartItem>;
               })}
             </ul>
             <p className=" ">총액</p>

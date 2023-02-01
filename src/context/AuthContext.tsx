@@ -9,12 +9,13 @@ interface PropsI {
 }
 
 interface ContextI {
+  uid: null | string;
   user: null | LoginI;
   login: () => {};
   logout: () => {};
 }
 
-const AuthContext = createContext<ContextI>({ user: null, login, logout });
+const AuthContext = createContext<ContextI>({ user: null, login, logout, uid: null });
 
 export const AuthContextProvider = ({ children }: PropsI) => {
   const [user, setUser] = useState<null | LoginI>(null);
@@ -23,7 +24,11 @@ export const AuthContextProvider = ({ children }: PropsI) => {
     onAuthChange(setUser);
   }, []);
 
-  return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, uid: user && user.uid, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuthContext = () => useContext(AuthContext);
