@@ -7,6 +7,7 @@ export interface ProductI {
 }
 
 export interface CartI {
+  id: string;
   title: string;
   quantity: number;
   option: string;
