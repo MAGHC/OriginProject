@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 import { GetProductTypeI } from './../type/GetProductType';
 
-import { addCart } from '../api/firebase';
+import { addAndEditCart } from '../api/firebase';
+
 import { useAuthContext } from '../context/AuthContext';
 
 interface DetailLocationState {
@@ -29,7 +30,7 @@ const ProductDetail = () => {
     if (!user) {
       alert('로그인해주세요');
     }
-    addCart(user?.uid, { ...product, option: select, quantity: 1 }).then(() => {
+    addAndEditCart(user?.uid, { ...product, option: select, quantity: 1 }).then(() => {
       setSuccess('상품이 추가되었습니다');
       setTimeout(() => setSuccess(null), 3000);
     });
