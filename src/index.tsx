@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
-import { Cart, ProductDetail, ProductNew } from './pages';
+import { Cart, ProductDetail, ProductNew, Home } from './pages';
 import ProtectedRouter from './pages/ProtectedRouter';
 
 const router = createBrowserRouter([
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <p>Main</p>,
+        element: <Home></Home>,
       },
       {
         path: '/product/new',
