@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
-import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut, BiCheckbox } from 'react-icons/bi';
+import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
 import User from './User';
 
