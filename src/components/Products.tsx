@@ -4,7 +4,7 @@ import { getProducts } from '../api/firebase.js';
 import ProductCard from './ProductCard';
 import ProductSkeleton from './skeleton/ProductSkeleton';
 
-const PRODUCT_WRAPPER = '   grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8';
+const PRODUCT_WRAPPER = ' md:mx-[8rem]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8';
 
 const MockSkeletonState = new Array(12);
 MockSkeletonState.fill(null);
