@@ -24,7 +24,7 @@ const Cart = () => {
 
       <section className="  px-[9rem] mt-[3rem] flex flex-col  ">
         {!hasProduct && (
-          <p className=" my-[10rem] text-hilight animate-pulse text-3xl font-kor font-black mx-auto">
+          <p className=" my-[10rem] text-highLight animate-pulse text-3xl font-kor font-black mx-auto">
             아이템을 추가해주세요{' '}
           </p>
         )}

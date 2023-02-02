@@ -7,7 +7,8 @@ module.exports = {
         main: '#C4C4C4',
         bright: '#E4E4E4',
         darker: '#626262',
-        hilight: '#4D3515',
+        highLight: '#4D3515',
+        highLightSub: '#E8E0DD',
       },
     },
     fontFamily: {
