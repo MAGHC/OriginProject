@@ -7,7 +7,7 @@ module.exports = {
         main: '#C4C4C4',
         bright: '#E4E4E4',
         darker: '#626262',
-        highLight: '#4D3515',
+        highLight: '#774B1E',
         highLightSub: '#E8E0DD',
       },
     },
