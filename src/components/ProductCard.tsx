@@ -13,13 +13,13 @@ const ProductCard = ({ product, product: { id, img, title, price } }: PropsI) =>
       onClick={() => navigate(`/product/${id}`, { state: { product } })}
     >
       <img
-        className=" rounded-lg cursor-pointer w-56 h-44 object-cover"
+        className=" rounded-[20px] cursor-pointer w-56 h-44 object-cover"
         alt={title}
         src={img}
       ></img>
-      <div className=" w-40 md:w-44  lg:w-48 xl:w-56  flex justify-between mx-auto   ">
+      <div className=" w-40 md:w-44  font-light lg:w-48 xl:w-56 font-body  flex justify-between mx-auto   ">
         <h3 className=" truncate ... w-1/2">{title}</h3>
-        <p className="  hidden lg:block font-semibold  ">{`₩${price}`}</p>
+        <p className="  hidden lg:block  ">{`₩${price}`}</p>
       </div>
     </li>
   );
