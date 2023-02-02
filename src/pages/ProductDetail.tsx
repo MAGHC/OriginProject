@@ -29,6 +29,7 @@ const ProductDetail = () => {
   const handlebutton = () => {
     if (!user) {
       alert('로그인해주세요');
+      return;
     }
     addAndEditCart(user?.uid, { ...product, option: select, quantity: 1 }).then(() => {
       setSuccess('상품이 추가되었습니다');
