@@ -6,6 +6,8 @@ import { useCart } from './../hooks/useCart';
 
 const COMMON_MARGIN_X = 'mx-[0.4rem]';
 
+const BUTTON_HOVER = 'hover:scale-150 transition-all duration-200';
+
 const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
   const { setCart, setRemoveCart } = useCart();
 
@@ -33,12 +35,21 @@ const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
       </div>
       <div className="flex items-center  ">
         <p className="  w-20 mx-[6rem]">{cart.option}</p>
-        <BiMinus onClick={handleMinus} className={`${COMMON_MARGIN_X} ml-8`}></BiMinus>
+        <button>
+          <BiMinus
+            onClick={handleMinus}
+            className={`${COMMON_MARGIN_X} ${BUTTON_HOVER}  ml-8`}
+          ></BiMinus>
+        </button>
         <p className={`${COMMON_MARGIN_X}`}>{cart.quantity}</p>
-        <BiPlus onClick={handlePluse} className={`${COMMON_MARGIN_X}`}></BiPlus>
+        <button>
+          <BiPlus onClick={handlePluse} className={`${COMMON_MARGIN_X} ${BUTTON_HOVER}`}></BiPlus>
+        </button>
         <p className=" w-24 ml-[8rem]">{cart.price} ￦</p>
         <p className=" w-24 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
-        <BiX onClick={handleDelete}></BiX>
+        <button>
+          <BiX className={`${BUTTON_HOVER}`} onClick={handleDelete}></BiX>
+        </button>
       </div>
     </li>
   );

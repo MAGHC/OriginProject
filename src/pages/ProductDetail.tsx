@@ -81,7 +81,7 @@ const ProductDetail = () => {
           </article>
           <button
             onClick={handlebutton}
-            className=" hover:animate-bounce w-full mt-8 bottom-0 md:absolute md:w-2/5 self-end font-body  py-3 rounded-sm bg-bright"
+            className=" hover:bg-darker  transition-all duration-300  w-full mt-8 bottom-0 md:absolute md:w-2/5 self-end font-body  py-3 rounded-sm bg-bright"
           >
             ADD CART
           </button>
