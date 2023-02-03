@@ -2,7 +2,16 @@ import { useAuthContext } from '../context/AuthContext';
 import CartItem from './../components/CartItem';
 import { useCart } from './../hooks/useCart';
 
+import { BiPlusMedical, BiMenu } from 'react-icons/bi';
+
 const COMMON_MARGIN_LEFT = ' border-b-2 mr-[9rem]';
+
+const SHIFFING_FEE = 3000;
+
+const COMMON_FEE_DESCRIBE = ' text-xs md:text-2xl font-semibold  font-kor  ';
+
+const COMMON_FEE_STYLE =
+  ' mx-4  md:mx-0 text-xl animate-pulse text-darker md:text-3xl font-semibold font-body ';
 
 const Cart = () => {
   const { uid } = useAuthContext();
@@ -14,9 +23,13 @@ const Cart = () => {
   if (error) return <p>error</p>;
   if (isLoading) return <p> Loading</p>;
 
+  const totalPrice = carts && carts?.reduce((prev, cur) => prev + cur.price * cur.quantity, 0);
+
+  console.log(totalPrice);
+
   return (
     <>
-      <h2 className="   px-[9rem] py-[3rem] text-4xl font-kor font-bold">
+      <h2 className=" px-[9rem] py-[3rem] text-4xl font-kor font-bold">
         <p>나의 원천</p>
         <p className=" font-medium">장바구니</p>
       </h2>
@@ -30,19 +43,32 @@ const Cart = () => {
 
         {hasProduct && (
           <>
-            <article className=" ml-[6.8rem] w-full  pb-8 font-body  text-xl flex justify ">
+            <article className=" hidden md:block ml-[6.8rem] w-full  pb-8 font-body  text-xl flex ">
               <p className={`${COMMON_MARGIN_LEFT} ml-8`}>Product</p>
               <p className={`${COMMON_MARGIN_LEFT}`}>Option</p>
               <p className={`${COMMON_MARGIN_LEFT}`}>Quantity</p>
-              <p className={`${COMMON_MARGIN_LEFT}`}>Price</p>
+              <p className={` ${COMMON_MARGIN_LEFT}`}>Price</p>
               <p className="border-b-2">Total Price</p>
             </article>
-            <ul className="py-8 ml-[6.5rem]">
+            <ul className=" grid grid-row-1 md:grid-cols-1 py-8 ml-[6.5rem]">
               {carts.map((cart) => {
                 return <CartItem uid={uid} cart={cart}></CartItem>;
               })}
             </ul>
-            <p className=" ">총액</p>
+            <div className="flex  mb-8 items-center md:justify-around ">
+              <p className={`${COMMON_FEE_DESCRIBE} ml-[6rem] md:ml-0 `}>
+                상품 총액:<span className={`${COMMON_FEE_STYLE}`}>{totalPrice}￦</span>
+              </p>
+              <BiPlusMedical></BiPlusMedical>
+              <p className={`${COMMON_FEE_DESCRIBE}`}>
+                배송료 : <span className={`${COMMON_FEE_STYLE}`}>{SHIFFING_FEE}￦</span>
+              </p>
+              <BiMenu className=" text-3xl"></BiMenu>
+              <p className={`${COMMON_FEE_DESCRIBE}`}>
+                총 예상금액 :
+                <span className={`${COMMON_FEE_STYLE}`}>{totalPrice + SHIFFING_FEE}￦</span>
+              </p>
+            </div>
           </>
         )}
       </section>

@@ -23,18 +23,17 @@ const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
   };
 
   return (
-    //맨위 li flex로 디자인
-    <li className="  font-body font-light flex my-8 items-center">
-      <div className="  flex flex-col items-center">
+    <li className="   text-lg font-body font-light md:flex my-8 items-center">
+      <div className="   flex flex-col items-center">
         <img
-          className=" rounded-lg object-cover min-w-[10rem] h-36"
+          className=" w-56 h-48 md:w-44 rounded-lg object-cover md:h-36"
           src={cart.img}
           alt={cart.title}
         ></img>
         <p>{cart.title.substring(0, 17)}...</p>
       </div>
-      <div className="flex items-center  ">
-        <p className="  w-20 mx-[6rem]">{cart.option}</p>
+      <div className="   flex items-center  ">
+        <p className=" hidden md:block  w-20 mx-[6rem]">{cart.option}</p>
         <button>
           <BiMinus
             onClick={handleMinus}
@@ -46,7 +45,7 @@ const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
           <BiPlus onClick={handlePluse} className={`${COMMON_MARGIN_X} ${BUTTON_HOVER}`}></BiPlus>
         </button>
         <p className=" w-24 ml-[8rem]">{cart.price} ￦</p>
-        <p className=" w-24 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
+        <p className=" hidden md:block w-24 ml-[7rem] mr-[5rem]">{cart.quantity * cart.price} ￦</p>
         <button>
           <BiX className={`${BUTTON_HOVER}`} onClick={handleDelete}></BiX>
         </button>
