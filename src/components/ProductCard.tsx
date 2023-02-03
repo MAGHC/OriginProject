@@ -18,8 +18,8 @@ const ProductCard = ({ product, product: { id, img, title, price } }: PropsI) =>
         src={img}
       ></img>
       <div className=" w-40 md:w-44  font-light lg:w-48 xl:w-56 font-body  flex justify-between mx-auto   ">
-        <h3 className=" truncate ... w-1/2">{title}</h3>
-        <p className="  hidden lg:block  ">{`₩${price}`}</p>
+        <h3 className=" w-full lg:truncate ... lg:w-1/2">{title}</h3>
+        <p className="  hidden lg:block lg:w-1/2  ">{`₩${price}`}</p>
       </div>
     </li>
   );
