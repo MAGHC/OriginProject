@@ -5,4 +5,5 @@ export interface GetProductTypeI {
   price: number;
   option: Array<string | number>;
   description: string;
+  category: string;
 }
