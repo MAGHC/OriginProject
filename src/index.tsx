@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: '/product/new',
         element: (
-          <ProtectedRouter>
+          <ProtectedRouter require>
             <ProductNew></ProductNew>
           </ProtectedRouter>
         ),
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: (
-          <ProtectedRouter>
+          <ProtectedRouter require={false}>
             <Cart></Cart>
           </ProtectedRouter>
         ),
