@@ -1,14 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import { getCart } from '../api/firebase';
 import { useAuthContext } from '../context/AuthContext';
 import CartItem from './../components/CartItem';
+import { useCart } from './../hooks/useCart';
 
 const COMMON_MARGIN_LEFT = ' border-b-2 mr-[9rem]';
 
 const Cart = () => {
   const { uid } = useAuthContext();
 
-  const { isLoading, error, data: carts } = useQuery(['cart'], () => getCart(uid));
+  const { isLoading, error, carts } = useCart();
 
   const hasProduct = carts && carts.length > 0;
 
@@ -25,7 +24,7 @@ const Cart = () => {
       <section className="  px-[9rem] mt-[3rem] flex flex-col  ">
         {!hasProduct && (
           <p className=" my-[10rem] text-highLight animate-pulse text-3xl font-kor font-black mx-auto">
-            아이템을 추가해주세요{' '}
+            아이템을 추가해주세요
           </p>
         )}
 

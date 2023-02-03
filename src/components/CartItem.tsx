@@ -2,20 +2,22 @@ import { CartI } from '../type/ProductType';
 
 import { BiPlus, BiMinus, BiX } from 'react-icons/bi';
 
-import { addAndEditCart, removeCart } from '../api/firebase';
+import { useCart } from './../hooks/useCart';
 
 const COMMON_MARGIN_X = 'mx-[0.4rem]';
 
 const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
+  const { setCart, setRemoveCart } = useCart();
+
   const handlePluse = () => {
-    addAndEditCart(uid, { ...cart, quantity: cart.quantity + 1 });
+    setCart.mutate({ ...cart, quantity: cart.quantity + 1 });
   };
   const handleMinus = () => {
     if (cart.quantity < 2) return;
-    addAndEditCart(uid, { ...cart, quantity: cart.quantity - 1 });
+    setCart.mutate({ ...cart, quantity: cart.quantity - 1 });
   };
   const handleDelete = () => {
-    removeCart(uid, cart.id);
+    setRemoveCart.mutate(cart.id);
   };
 
   return (

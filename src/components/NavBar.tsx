@@ -6,16 +6,15 @@ import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 import User from './User';
 
 import { useAuthContext } from '../context/AuthContext';
-import { useQuery } from '@tanstack/react-query';
-import { getCart } from '../api/firebase';
+import { useCart } from './../hooks/useCart';
 
 const NAV_COMMON_STYLE =
   ' transition duration-300 hover:scale-110 font-light font-title gap-1 flex items-center ';
 
 const NavBar = () => {
   const { user, login, logout } = useAuthContext();
-  const { data: carts } = useQuery(['cart'], () => getCart(user?.uid));
 
+  const { carts } = useCart();
   return (
     <header className=" z-50 w-screen sticky top-0  px-12 flex justify-between bg-slate-900 p-4">
       <Link to="/">

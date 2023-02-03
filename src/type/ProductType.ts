@@ -10,7 +10,8 @@ export interface CartI {
   id: string;
   title: string;
   quantity: number;
-  option: string;
+  option: string | number;
   img: string;
   price: number;
+  description: string;
 }

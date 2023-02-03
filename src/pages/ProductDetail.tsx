@@ -3,9 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 import { GetProductTypeI } from './../type/GetProductType';
 
-import { addAndEditCart } from '../api/firebase';
-
 import { useAuthContext } from '../context/AuthContext';
+import { useCart } from './../hooks/useCart';
 
 interface DetailLocationState {
   state: { product: GetProductTypeI };
@@ -24,6 +23,8 @@ const ProductDetail = () => {
   const [select, setSelect] = useState(option && option[0]);
   const [successs, setSuccess] = useState<string | null>();
 
+  const { setCart } = useCart();
+
   console.log(select);
 
   const handlebutton = () => {
@@ -31,10 +32,15 @@ const ProductDetail = () => {
       alert('로그인해주세요');
       return;
     }
-    addAndEditCart(user?.uid, { ...product, option: select, quantity: 1 }).then(() => {
-      setSuccess('상품이 추가되었습니다');
-      setTimeout(() => setSuccess(null), 3000);
-    });
+    setCart.mutate(
+      { ...product, option: select, quantity: 1 },
+      {
+        onSuccess: () => {
+          setSuccess('상품이 추가되었습니다');
+          setTimeout(() => setSuccess(null), 3000);
+        },
+      },
+    );
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
