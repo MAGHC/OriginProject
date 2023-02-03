@@ -1,12 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-
 import { useState } from 'react';
+import { useGetProduct } from '../hooks/useProducts';
 
-import { getProducts } from '../api/firebase.js';
 import ProductCard from './ProductCard';
 import ProductSkeleton from './skeleton/ProductSkeleton';
-
-import { GetProductTypeI } from './../type/GetProductType';
 
 const PRODUCT_WRAPPER = ' md:mx-[16rem]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8';
 
@@ -17,17 +13,7 @@ const CATEGORYIES = ['Women', 'Goods', 'Life', 'Special'];
 
 const Products = () => {
   const [filter, setFilter] = useState<string | boolean>(false);
-
-  const {
-    error,
-    isLoading,
-    data: products,
-  } = useQuery<GetProductTypeI[]>(['products'], getProducts, {
-    select: (products) =>
-      products.filter((product) => {
-        return filter ? product.category === filter : product;
-      }),
-  });
+  const { products, isLoading, error } = useGetProduct(filter);
 
   return (
     <>

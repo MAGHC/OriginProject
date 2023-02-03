@@ -1,28 +1,22 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 
 import { BiCheckCircle } from 'react-icons/bi';
 
 import { uploadImg } from '../api/cloudinary.js';
-import { setNewProduct } from '../api/firebase.js';
 
 import { ProductI } from '../type/ProductType';
+
+import { useAddProducts } from '../hooks/useProducts';
 
 const NEW_PRODUCT_INPUT_COMMON_STYLE = ' rounded-lg m-8 w-3/4 p-4 border border-gray-600';
 
 const ProductNew = () => {
+  const addProducts = useAddProducts();
+
   const [product, setProduct] = useState<ProductI>({});
   const [file, setFile] = useState<Blob>();
   const [uploading, setUploading] = useState(false);
   const [successs, setSuccess] = useState<string | null>();
-
-  const queryClient = useQueryClient();
-  const addProducts = useMutation(
-    ({ product, url }: { product: ProductI; url: string }) => setNewProduct(product, url),
-    {
-      onSuccess: () => queryClient.invalidateQueries(['products']),
-    },
-  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
