@@ -43,7 +43,7 @@ const Cart = () => {
 
         {hasProduct && (
           <>
-            <article className=" hidden md:block ml-[6.8rem] w-full  pb-8 font-body  text-xl flex ">
+            <article className="  hidden ml-[6.8rem] w-full  pb-8 font-body  text-xl md:flex ">
               <p className={`${COMMON_MARGIN_LEFT} ml-8`}>Product</p>
               <p className={`${COMMON_MARGIN_LEFT}`}>Option</p>
               <p className={`${COMMON_MARGIN_LEFT}`}>Quantity</p>
