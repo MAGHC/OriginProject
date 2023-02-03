@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 
 import { BiCheckCircle } from 'react-icons/bi';
@@ -15,16 +16,29 @@ const ProductNew = () => {
   const [uploading, setUploading] = useState(false);
   const [successs, setSuccess] = useState<string | null>();
 
+  const queryClient = useQueryClient();
+  const addProducts = useMutation(
+    ({ product, url }: { product: ProductI; url: string }) => setNewProduct(product, url),
+    {
+      onSuccess: () => queryClient.invalidateQueries(['products']),
+    },
+  );
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setUploading(true);
     uploadImg(file)
-      .then((img) => {
-        setNewProduct(product, img).then(() => {
-          setSuccess('제품이 데이터베이스에 등록되었습니다');
-          window.scrollTo(0, 0);
-          setTimeout(() => setSuccess(null), 3000);
-        });
+      .then((url) => {
+        addProducts.mutate(
+          { product, url },
+          {
+            onSuccess: () => {
+              setSuccess('제품이 데이터베이스에 등록되었습니다');
+              window.scrollTo(0, 0);
+              setTimeout(() => setSuccess(null), 3000);
+            },
+          },
+        );
       })
       .finally(() => setUploading(false));
   };
