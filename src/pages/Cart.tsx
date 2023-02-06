@@ -1,4 +1,3 @@
-import { useAuthContext } from '../context/AuthContext';
 import CartItem from './../components/CartItem';
 import { useCart } from './../hooks/useCart';
 
