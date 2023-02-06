@@ -48,12 +48,12 @@ const Cart = () => {
               <p className={` ${COMMON_MARGIN_LEFT}`}>Price</p>
               <p className="border-b-2">Total Price</p>
             </article>
-            <ul className=" grid grid-row-1 md:grid-cols-1 py-8 ml-[6.5rem]">
+            <ul className=" grid grid-row-1 md:grid-cols-1 py-8 md:ml-[6.5rem]">
               {carts.map((cart) => {
                 return <CartItem cart={cart}></CartItem>;
               })}
             </ul>
-            <div className="flex  mb-8 items-center md:justify-around ">
+            <div className=" ml-[-5rem] md:ml-0 flex  mb-8 items-center md:justify-around ">
               <p className={`${COMMON_FEE_DESCRIBE} ml-[6rem] md:ml-0 `}>
                 상품 총액:<span className={`${COMMON_FEE_STYLE}`}>{totalPrice}￦</span>
               </p>
