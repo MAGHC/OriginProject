@@ -14,8 +14,6 @@ const COMMON_FEE_STYLE =
   ' mx-4  md:mx-0 text-xl animate-pulse text-darker md:text-3xl font-semibold font-body ';
 
 const Cart = () => {
-  const { uid } = useAuthContext();
-
   const { isLoading, error, carts } = useCart();
 
   const hasProduct = carts && carts.length > 0;
@@ -52,7 +50,7 @@ const Cart = () => {
             </article>
             <ul className=" grid grid-row-1 md:grid-cols-1 py-8 ml-[6.5rem]">
               {carts.map((cart) => {
-                return <CartItem uid={uid} cart={cart}></CartItem>;
+                return <CartItem cart={cart}></CartItem>;
               })}
             </ul>
             <div className="flex  mb-8 items-center md:justify-around ">

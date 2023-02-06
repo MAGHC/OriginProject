@@ -8,7 +8,7 @@ const COMMON_MARGIN_X = 'mx-[0.4rem]';
 
 const BUTTON_HOVER = 'hover:scale-150 transition-all duration-200';
 
-const CartItem = ({ cart, uid }: { cart: CartI; uid: null | string }) => {
+const CartItem = ({ cart }: { cart: CartI }) => {
   const { setCart, setRemoveCart } = useCart();
 
   const handlePluse = () => {
