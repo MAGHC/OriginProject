@@ -32,7 +32,7 @@ const Cart = () => {
         <p className=" font-medium">장바구니</p>
       </h2>
 
-      <section className="  px-[9rem] mt-[3rem] flex flex-col  ">
+      <section className=" mt-[-2rem] px-[9rem] md:mt-[3rem] flex flex-col  ">
         {!hasProduct && (
           <p className=" my-[10rem] text-highLight animate-pulse text-3xl font-kor font-black mx-auto">
             아이템을 추가해주세요
