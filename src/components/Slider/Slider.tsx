@@ -34,17 +34,17 @@ const Slider = () => {
         })}
       </ul>
       <button
-        className={`${
+        className={` z-10 ${
           cur === SLIDERS_ARR.length - 1 ? 'hidden' : 'block'
         } ${SLIDER_BTN_STYLE} right-0`}
       >
         <BiRightArrowAlt onClick={handleNext}></BiRightArrowAlt>
       </button>
-      <button className={`${cur === 0 ? 'hidden' : 'block'} ${SLIDER_BTN_STYLE} left-0 `}>
+      <button className={` z-10 ${cur === 0 ? 'hidden' : 'block'} ${SLIDER_BTN_STYLE} left-0 `}>
         <BiLeftArrowAlt onClick={handlePrev}></BiLeftArrowAlt>
       </button>
 
-      <p className=" opacity-50 font-title absolute bottom-0 right-0 text-xl">
+      <p className=" z-10 opacity-50 font-title absolute bottom-0 right-0 text-xl">
         {cur + 1}/{SLIDERS_ARR.length}
       </p>
     </div>
