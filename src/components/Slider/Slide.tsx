@@ -1,9 +1,9 @@
 const Slide = ({ img, index, cur }: { img: string; cur: number; index: number }) => {
-  const currentZIndex = cur === index ? 4 : 0;
   return (
     <img
-      style={{ zIndex: currentZIndex }}
-      className={`  absolute bottom-0  translate-x-0 w-full h-full `}
+      className={`  ${
+        cur === index ? 'opacity-100' : 'opacity-0'
+      } absolute bottom-0 transition-all duration-500   w-full h-full `}
       src={img}
       alt="slide"
     ></img>
