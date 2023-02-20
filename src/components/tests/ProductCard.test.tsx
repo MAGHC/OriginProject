@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 
 import { GetProductTypeI } from '../../type/GetProductType';
 
@@ -29,6 +30,26 @@ describe('ProductCard', () => {
 
     expect(screen.getByText(title)).toBeInTheDocument();
     expect(screen.getByText(`₩${price.toString()}`)).toBeInTheDocument();
+  });
+
+  it('naviagte to ProductDetail page when Clicked', () => {
+    function TestComponent() {
+      return <pre>{JSON.stringify(useLocation().state)}</pre>;
+    }
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<ProductCard product={mockProduct} />} />
+          <Route path={`/product/${id}`} element={<TestComponent />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const card = screen.getByRole('listitem');
+    userEvent.click(card);
+
+    expect(screen.getByText(JSON.stringify({ product: mockProduct }))).toBeInTheDocument();
   });
 });
 
