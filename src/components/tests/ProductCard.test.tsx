@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { GetProductTypeI } from '../../type/GetProductType';
@@ -15,12 +15,20 @@ describe('ProductCard', () => {
     description: 'stest',
     category: 'test',
   };
-  it('product item render', () => {
+
+  const { id, img, title, price, option, description, category } = mockProduct;
+
+  it('product item render', async () => {
     render(
       <MemoryRouter>
         <ProductCard product={mockProduct} />
       </MemoryRouter>,
     );
+    const image = screen.getByAltText(title);
+    expect(image).toHaveAttribute('src', img);
+
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(screen.getByText(`₩${price.toString()}`)).toBeInTheDocument();
   });
 });
 
