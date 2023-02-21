@@ -1,29 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
-
-import { GetProductTypeI } from '../../type/GetProductType';
+import { Route, useLocation } from 'react-router-dom';
 
 import ProductCard from '../ProductCard';
 
-describe('ProductCard', () => {
-  const mockProduct: GetProductTypeI = {
-    id: '13',
-    img: '',
-    title: 'test',
-    price: 13000,
-    option: ['test'],
-    description: 'stest',
-    category: 'test',
-  };
+import { mockProduct } from '../../tests/data';
+import { withRouter } from '../../tests/utils';
 
+describe('ProductCard', () => {
   const { id, img, title, price, option, description, category } = mockProduct;
 
   it('product item render', async () => {
     render(
-      <MemoryRouter>
-        <ProductCard product={mockProduct} />
-      </MemoryRouter>,
+      withRouter(
+        <Route path="/" element={<ProductCard product={mockProduct}></ProductCard>}></Route>,
+      ),
     );
     const image = screen.getByAltText(title);
     expect(image).toHaveAttribute('src', img);
@@ -38,12 +29,13 @@ describe('ProductCard', () => {
     }
 
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
+      withRouter(
+        <>
           <Route path="/" element={<ProductCard product={mockProduct} />} />
           <Route path={`/product/${id}`} element={<TestComponent />} />
-        </Routes>
-      </MemoryRouter>,
+        </>,
+        ['/'],
+      ),
     );
 
     const card = screen.getByRole('listitem');
