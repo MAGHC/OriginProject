@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import userEvent from '@testing-library/user-event';
 import { Route, useLocation } from 'react-router-dom';
 
@@ -9,6 +10,17 @@ import { withRouter } from '../../tests/utils';
 
 describe('ProductCard', () => {
   const { id, img, title, price, option, description, category } = mockProduct;
+
+  it('snapshot test', () => {
+    const component = renderer
+      .create(
+        withRouter(
+          <Route path="/" element={<ProductCard product={mockProduct}></ProductCard>}></Route>,
+        ),
+      )
+      .toJSON();
+    expect(component).toMatchSnapshot();
+  });
 
   it('product item render', async () => {
     render(

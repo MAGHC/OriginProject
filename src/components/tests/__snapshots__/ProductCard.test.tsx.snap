@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard snapshot test 1`] = `
+<li
+  className=" flex flex-col items-center"
+  onClick={[Function]}
+>
+  <img
+    alt="test"
+    className=" rounded-[20px] cursor-pointer w-56 h-44 object-cover"
+    src=""
+  />
+  <div
+    className=" w-40 md:w-44  font-light lg:w-48 xl:w-56 font-body  flex justify-between mx-auto   "
+  >
+    <h3
+      className=" w-full lg:truncate ... lg:w-1/2"
+    >
+      test
+    </h3>
+    <p
+      className="  hidden lg:block lg:w-1/2  "
+    >
+      ₩13000
+    </p>
+  </div>
+</li>
+`;
