@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products snapshot 1`] = `
+Array [
+  <ul
+    className="sm:my-20 mx-[8rem] text-xl md:mx-[16rem] font-body text-highLight mt-[6.85rem] mb-[1.9rem] flex gap-12"
+  >
+    <li
+      className=" hover:scale-110 transition-all duration-200"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Women
+      </button>
+    </li>
+    <li
+      className=" hover:scale-110 transition-all duration-200"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Goods
+      </button>
+    </li>
+    <li
+      className=" hover:scale-110 transition-all duration-200"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Life
+      </button>
+    </li>
+    <li
+      className=" hover:scale-110 transition-all duration-200"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Special
+      </button>
+    </li>
+  </ul>,
+  <ul
+    className=" md:mx-[16rem]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
+  >
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+    <li
+      className=" animate-pulse mx-auto "
+    >
+      <div
+        className=" rounded-lg bg-slate-400 w-56 h-44"
+      />
+      <div
+        className=" w-56 my-2 gap-4 flex justify-between"
+      >
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+        <div
+          className=" bg-slate-400 w-1/4 h-3"
+        />
+      </div>
+    </li>
+  </ul>,
+]
+`;
