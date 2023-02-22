@@ -4,10 +4,11 @@ import { useAuthContext } from '../context/AuthContext';
 import { addAndEditCart, removeCart, getCart } from '../api/firebase';
 
 import { CartI } from '../type/ProductType';
+import { ContextI } from './../context/AuthContext';
 
 export function useCart() {
   const queryClient = useQueryClient();
-  const { uid } = useAuthContext();
+  const { uid } = useAuthContext() as ContextI;
 
   const {
     data: carts,

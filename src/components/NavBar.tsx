@@ -7,12 +7,13 @@ import User from './User';
 
 import { useAuthContext } from '../context/AuthContext';
 import { useCart } from './../hooks/useCart';
+import { ContextI } from './../context/AuthContext';
 
 const NAV_COMMON_STYLE =
   ' transition duration-300 hover:scale-110 font-light font-title gap-1 flex items-center ';
 
 const NavBar = () => {
-  const { user, login, logout } = useAuthContext();
+  const { user, login, logout } = useAuthContext() as ContextI;
 
   const { carts } = useCart();
   return (

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { GetProductTypeI } from './../type/GetProductType';
 
-import { useAuthContext } from '../context/AuthContext';
+import { ContextI, useAuthContext } from '../context/AuthContext';
 import { useCart } from './../hooks/useCart';
 
 interface DetailLocationState {
@@ -18,7 +18,7 @@ const ProductDetail = () => {
     },
   } = useLocation() as DetailLocationState;
 
-  const { user } = useAuthContext();
+  const { user } = useAuthContext() as ContextI;
 
   const [select, setSelect] = useState(option && option[0]);
   const [successs, setSuccess] = useState<string | null>();
