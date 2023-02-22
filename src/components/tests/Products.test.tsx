@@ -19,8 +19,6 @@ describe('Products', () => {
 
   afterEach(() => {
     mockGetProdut.mockReset();
-    mockAuth.login.mockReset();
-    mockAuth.logout.mockReset();
   });
 
   it('snapshot', () => {
@@ -43,21 +41,19 @@ describe('Products', () => {
   it('error renders', async () => {
     mockGetProdut.mockImplementation(() => null);
 
-    render(
-      withAllContext(
-        withRouter(
-          <Route path="/" element={<Products getProducts={mockGetProdut}></Products>}></Route>,
-        ),
-        mockAuth,
-      ),
-    );
+    renderProduts();
     await waitFor(() => screen.findByText('에러'));
   });
 
   it('success renders', async () => {
     mockGetProdut.mockImplementation(() => mockProducts);
+    renderProduts();
 
-    render(
+    await (waitFor(() => screen.findByText('test14')), { timeout: 3000 });
+  });
+
+  function renderProduts() {
+    return render(
       withAllContext(
         withRouter(
           <Route path="/" element={<Products getProducts={mockGetProdut}></Products>}></Route>,
@@ -65,9 +61,7 @@ describe('Products', () => {
         mockAuth,
       ),
     );
-
-    await (waitFor(() => screen.findByText('test14')), { timeout: 3000 });
-  });
+  }
 });
 
 export {};
