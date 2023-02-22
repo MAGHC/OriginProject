@@ -11,15 +11,15 @@ MockSkeletonState.fill(null);
 
 const CATEGORYIES = ['Women', 'Goods', 'Life', 'Special'];
 
-const Products = () => {
+const Products = ({ getProducts }: { getProducts: Function }) => {
   const [filter, setFilter] = useState<string | boolean>(false);
-  const { products, isLoading, error } = useGetProduct(filter);
+  const { products, isLoading, error } = useGetProduct(filter, getProducts);
 
   return (
     <>
       <ul className="sm:my-20 mx-[8rem] text-xl md:mx-[16rem] font-body text-highLight mt-[6.85rem] mb-[1.9rem] flex gap-12">
         {CATEGORYIES.map((category) => (
-          <li className=" hover:scale-110 transition-all duration-200">
+          <li key={category} className=" hover:scale-110 transition-all duration-200">
             <button onClick={() => setFilter(category)}>{category}</button>
           </li>
         ))}
