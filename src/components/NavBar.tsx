@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { ReactComponent as Logo } from '../assets/images/Logo.svg';
+import Logo from '../assets/images/Logo.svg';
+
 import { BiLogIn, BiCartAlt, BiCubeAlt, BiLogOut } from 'react-icons/bi';
 
 import User from './User';
@@ -18,14 +20,14 @@ const NavBar = () => {
   const { carts } = useCart();
   return (
     <header className=" z-50 w-screen sticky top-0  px-12 flex justify-between bg-slate-900 p-4">
-      <Link to="/">
-        <Logo></Logo>
+      <Link href="/">
+        <Image width={120} src={Logo} alt="logo"></Image>
       </Link>
       <nav className=" items-center  flex gap-8 text-white font-light">
-        <Link className={`${NAV_COMMON_STYLE} `} to="/product/new">
+        <Link className={`${NAV_COMMON_STYLE} `} href="/product/new">
           <BiCubeAlt></BiCubeAlt>New Products
         </Link>
-        <Link className={`${NAV_COMMON_STYLE} relative`} to="/cart">
+        <Link className={`${NAV_COMMON_STYLE} relative`} href="/cart">
           <span className=" absolute text-sm left-0.5 -top-3">{carts && carts.length}</span>
           <BiCartAlt></BiCartAlt>Cart
         </Link>
