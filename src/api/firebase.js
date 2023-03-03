@@ -12,10 +12,10 @@ import {
 import { getDatabase, ref, child, get, set, remove } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_APP_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_APP_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
 const app = initializeApp(firebaseConfig);
