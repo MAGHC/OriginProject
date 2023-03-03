@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthContextProvider } from '../context/AuthContextProvider';
 
 import '../global.css';
+import '../base.css';
 
 import '../components/Layout';
 import Layout from '../components/Layout';
