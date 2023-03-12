@@ -1,17 +1,22 @@
 import { GetProductTypeI } from '../type/GetProductType';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 interface PropsI {
   product: GetProductTypeI;
 }
 
-const ProductCard = ({ product, product: { id, img, title, price } }: PropsI) => {
-  const navigate = useNavigate();
+const ProductCard = ({ product: { id, img, title, price, option, description } }: PropsI) => {
+  const router = useRouter();
+
+  const sendProps = () => {
+    router.push({
+      pathname: `/product/${id}`,
+      query: { img, option, description, price, title, id },
+    });
+  };
+
   return (
-    <li
-      className=" flex flex-col items-center"
-      onClick={() => navigate(`/product/${id}`, { state: { product } })}
-    >
+    <li className=" flex flex-col items-center" onClick={sendProps}>
       <img
         className=" rounded-[20px] cursor-pointer w-56 h-44 object-cover"
         alt={title}

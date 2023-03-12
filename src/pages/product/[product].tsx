@@ -1,22 +1,24 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
-import { GetProductTypeI } from './../type/GetProductType';
-
-import { ContextI, useAuthContext } from '../context/AuthContext';
-import { useCart } from './../hooks/useCart';
-
-interface DetailLocationState {
-  state: { product: GetProductTypeI };
-}
+import { ContextI, useAuthContext } from '../../context/AuthContext';
+import { useCart } from '../../hooks/useCart';
+import { useRouter } from 'next/router';
 
 const ProductDetail = () => {
+  const router = useRouter();
+
   const {
-    state: {
-      product: { img, option, description, price, title },
-      product,
-    },
-  } = useLocation() as DetailLocationState;
+    query: { id, img, option, description, price, title },
+  } = router;
+
+  const product = {
+    id: typeof id === 'string' ? id : '',
+    img: typeof img === 'string' ? img : '',
+    option: typeof option === 'object' ? option : '',
+    description: typeof description === 'string' ? description : '',
+    price: typeof price === 'string' ? parseInt(price) : 0,
+    title: typeof title === 'string' ? title : '',
+  };
 
   const { user } = useAuthContext() as ContextI;
 
@@ -32,8 +34,9 @@ const ProductDetail = () => {
       alert('로그인해주세요');
       return;
     }
+
     setCart.mutate(
-      { ...product, option: select, quantity: 1 },
+      { ...product, option: typeof select === 'string' ? select : '', quantity: 1 },
       {
         onSuccess: () => {
           setSuccess('상품이 추가되었습니다');
@@ -52,22 +55,24 @@ const ProductDetail = () => {
       <section className=" relative flex flex-col md:flex-row justify-center  mx-[8.75rem] my-52 gap-12">
         <img
           className="  min-w-[23rem]  object-cover rounded-3xl w-[38rem] h-[30rem]"
-          alt={title}
-          src={img}
+          alt={product.title}
+          src={product.img}
         ></img>
         <div className=" w-[23rem] md:w-[35rem]">
-          <h2 className=" mb-5 font-bold font-title text-3xl">{title.toLocaleUpperCase()}</h2>{' '}
+          <h2 className=" mb-5 font-bold font-title text-3xl">
+            {typeof title === 'string' ? title.toLocaleUpperCase() : ''}
+          </h2>
           <p className=" pb-5 w-full  border-b-2 font-thin font-body text-3xl">{price}￦</p>
           <article className="  mt-5 gap-4 flex items-center ">
             <label htmlFor="select" className="  font-body font-medium text-2xl">
-              Options({option.length})
+              Options({option && option.length})
             </label>
             <select
               onChange={handleChange}
               id="select"
               className=" font-body font-light  p-1 border-4 border-double border-darker text-xl"
             >
-              {option &&
+              {typeof option === 'object' &&
                 option.map((opt, i) => (
                   <option className="font-body font-light" id={`옵션+${i}`} key={i}>
                     {opt}

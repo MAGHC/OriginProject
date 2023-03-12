@@ -3,7 +3,7 @@ export interface GetProductTypeI {
   img: string;
   title: string;
   price: number;
-  option: Array<string | number>;
+  option: Array<string>;
   description: string;
   category: string;
 }
