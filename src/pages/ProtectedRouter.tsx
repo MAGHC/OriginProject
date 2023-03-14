@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { ContextI, useAuthContext } from '../context/AuthContext';
 
 interface PropsI {
@@ -7,9 +7,11 @@ interface PropsI {
 }
 
 const ProtectedRouter = ({ children, require }: PropsI) => {
+  const router = useRouter();
+
   const { user } = useAuthContext() as ContextI;
 
-  if (!user || (require && !user.Admin)) return <Navigate to="/" replace></Navigate>;
+  if (!user || (require && !user.Admin)) return router.push({ pathname: '/' });
 
   return <>{children}</>;
 };
